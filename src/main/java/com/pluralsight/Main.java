@@ -1,10 +1,32 @@
 package com.pluralsight;
 
+import com.pluralsight.models.Hotel;
 import com.pluralsight.models.Room;
 import com.pluralsight.models.Employee;
 
 public class Main {
     public static void main(String[] args) {
+
+        // testing hotel class
+        Hotel hotel = new Hotel("The Grand Plaza!", 5, 20);
+
+        System.out.println("\n");
+        System.out.println("Available suites: " + hotel.getAvailableSuites());
+        System.out.println("Available rooms: " + hotel.getAvailableRooms());
+
+        System.out.println("Booking 2 suites...");
+        System.out.println("Success? " + hotel.bookRoom(2, true));
+
+        System.out.println("Booking 3 basic rooms...");
+        System.out.println("Success? " + hotel.bookRoom(3, false));
+
+        System.out.println("Available suites: " + hotel.getAvailableSuites());
+        System.out.println("Available rooms: " + hotel.getAvailableRooms());
+
+        System.out.println("\n");
+        System.out.println("=========================");
+        System.out.println("\n");
+
 
         // testing room class
         System.out.println("=== ROOM TESTS ===");
@@ -25,21 +47,21 @@ public class Main {
         room.cleanRoom();
         System.out.println("Room available? " + room.isAvailable());
 
+        System.out.println("\n");
+        System.out.println("=========================");
+        System.out.println("\n");
+
 
         // testing employee class
-        System.out.println("\n=== EMPLOYEE TESTS ===");
-
         Employee emp = new Employee(101, "Jayln", "Front Desk", 20.00, 0);
 
-        emp.punchIn(10);   // 10:00 AM
-        emp.punchOut(14);  // 2:00 PM → worked 4 hours
+        emp.punchIn(10);
+        emp.punchOut(14);
 
-        emp.punchIn(15);   // 3:00 PM
-        emp.punchOut(20);  // 8:00 PM → worked 5 hours
+        emp.punchIn();
+        emp.punchOut();
 
         System.out.println("Total hours worked: " + emp.getHoursWorked());
-        System.out.println("Regular hours: " + emp.getRegularHours());
-        System.out.println("Overtime hours: " + emp.getOvertimeHours());
         System.out.println("Total pay: $" + emp.getTotalPay());
     }
 }
