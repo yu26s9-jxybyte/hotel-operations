@@ -14,34 +14,16 @@ public class Room {
         this.dirty = dirty;
     }
 
-    public int getNumberOfBeds() {
-        return numberOfBeds;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public boolean isOccupied() {
-        return occupied;
-    }
-
-    public boolean isDirty() {
-        return dirty;
-    }
-
     public boolean isAvailable() {
-        if (occupied == true) return false;
-        if (dirty == true) return false;
+        if (occupied) return false;
+        if (dirty) return false;
         return true;
     }
-
-    // part 2 of exercise vv
 
     public void checkIn() {
         if (isAvailable()) {
             occupied = true;
-            dirty = true;   // room becomes dirty as soon as someone stays
+            dirty = true;
             System.out.println("Guest checked in.");
         } else {
             System.out.println("Room is not available for check-in.");
@@ -49,9 +31,9 @@ public class Room {
     }
 
     public void checkOut() {
-        if (occupied == true) {
+        if (occupied) {
             occupied = false;
-            dirty = true;   // room must be cleaned after checkout
+            dirty = true;
             System.out.println("Guest checked out. Room needs cleaning.");
         } else {
             System.out.println("Room is already empty.");
@@ -59,11 +41,12 @@ public class Room {
     }
 
     public void cleanRoom() {
-        if (dirty == true) {
+        if (!occupied) {
             dirty = false;
             System.out.println("Room has been cleaned.");
         } else {
-            System.out.println("Room is already clean.");
+            System.out.println("Cannot clean an occupied room.");
         }
     }
 }
+

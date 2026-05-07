@@ -7,6 +7,22 @@ import com.pluralsight.models.Employee;
 public class Main {
     public static void main(String[] args) {
 
+        // testing room and employee
+        Room room = new Room(2, 150, false, false);
+        room.checkIn();
+        room.checkOut();
+        room.cleanRoom();
+
+        Employee emp = new Employee(101, "Jayln", "Front Desk", 20.00, 0);
+        emp.punchTimeCard(10);
+        emp.punchTimeCard(14);
+
+        emp.punchTimeCard();
+        try { Thread.sleep(2000); } catch (Exception e) {}
+        emp.punchTimeCard();
+
+        System.out.println("Hours worked: " + emp.getHoursWorked());
+
         // testing hotel class
         Hotel hotel = new Hotel("The Grand Plaza!", 5, 20);
 
@@ -28,10 +44,8 @@ public class Main {
         System.out.println("\n");
 
 
-        // testing room class
+        // room
         System.out.println("=== ROOM TESTS ===");
-
-        Room room = new Room(2, 150.00, false, false);
 
         System.out.println("Room available? " + room.isAvailable());
 
@@ -51,15 +65,6 @@ public class Main {
         System.out.println("=========================");
         System.out.println("\n");
 
-
-        // testing employee class
-        Employee emp = new Employee(101, "Jayln", "Front Desk", 20.00, 0);
-
-        emp.punchIn(10);
-        emp.punchOut(14);
-
-        emp.punchIn();
-        emp.punchOut();
 
         System.out.println("Total hours worked: " + emp.getHoursWorked());
         System.out.println("Total pay: $" + emp.getTotalPay());
